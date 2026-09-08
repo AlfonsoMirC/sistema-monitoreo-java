@@ -30,3 +30,10 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
     * **Qué representa:** Un dispositivo electrónico/instrumento de medición montado en el tanque.
     * **Por qué debe existir:** Separa la responsabilidad de la *medición* del almacenamiento físico. En un entorno industrial, el operador no mide directamente el estanque, sino que interactúa a través de la lectura devuelta por un instrumento.
     * **Responsabilidad:** Consultar e inspeccionar el estado actual del tanque al que está asignado y transformar esos datos en lecturas comprensibles para la supervisión (como el nivel en litros o el porcentaje).
+
+3. Estado y comportamiento
+
+| Objeto propuesto | Responsabilidad | Información que debe conservar (Estado) | Comportamientos que debe realizar (Comportamiento) |
+| :--- | :--- | :--- | :--- |
+| **Tanque** | Representar la estructura física del recipiente, almacenar el líquido y validar los límites operacionales. | * Identificador<br>* Capacidad máxima (litros)<br>* Nivel actual (litros)<br>* Estado operativo (`DETENIDO`, `LLENANDO`, `VACIANDO`) | * Permitir modificar su nivel aumentando o disminuyendo litros (respetando topes).<br>* Cambiar el estado de operación.<br>* Permitir consultar la información general del tanque.<br>* Calcular el porcentaje de llenado en base a su nivel y capacidad. |
+| **SensorDeNivel** | Proporcionar una lectura indirecta e inspección del estado de un tanque. | * Tanque al que se encuentra asociado/vinculado | * Consultar y retornar el nivel en litros del tanque vinculado.<br>* Consultar y retornar el porcentaje de llenado del tanque.<br>* Generar un reporte o lectura con el formato especificado del estado del tanque. |
