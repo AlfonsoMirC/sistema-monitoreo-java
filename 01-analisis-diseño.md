@@ -16,3 +16,17 @@ El sistema debe ofrecer funcionalidades operativas básicas que permitan:
 * Leer el nivel de almacenamiento a través de un componente dedicado que actúe como interfaz de medición (sensor).
 
 Para asegurar la integridad de la simulación, se imponen restricciones físicas estrictas: el nivel de fluido de un tanque jamás podrá ser un valor negativo ($0\text{ L}$) ni sobrepasar su capacidad máxima declarada ($Nivel \le Capacidad$).
+
+2. Identificación de objetos
+
+A partir del problema planteado, identificamos los siguientes elementos que deben representarse como objetos:
+
+* **Objeto Tanque:**
+    * **Qué representa:** Un recipiente físico de almacenamiento industrial dentro de la planta.
+    * **Por qué debe existir:** Es la entidad principal sobre la cual recae la lógica del negocio. Contiene el volumen del fluido y mantiene las reglas físicas que aseguran que el volumen no sobrepase límites no permitidos.
+    * **Responsabilidad:** Gestionar su volumen (sumar/restar litros), mantener la consistencia de sus límites físicos (mínimo y máximo) y registrar el estado operativo en el que se encuentra.
+
+* **Objeto SensorDeNivel:**
+    * **Qué representa:** Un dispositivo electrónico/instrumento de medición montado en el tanque.
+    * **Por qué debe existir:** Separa la responsabilidad de la *medición* del almacenamiento físico. En un entorno industrial, el operador no mide directamente el estanque, sino que interactúa a través de la lectura devuelta por un instrumento.
+    * **Responsabilidad:** Consultar e inspeccionar el estado actual del tanque al que está asignado y transformar esos datos en lecturas comprensibles para la supervisión (como el nivel en litros o el porcentaje).
