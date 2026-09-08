@@ -37,3 +37,10 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
 | :--- | :--- | :--- | :--- |
 | **Tanque** | Representar la estructura física del recipiente, almacenar el líquido y validar los límites operacionales. | * Identificador<br>* Capacidad máxima (litros)<br>* Nivel actual (litros)<br>* Estado operativo (`DETENIDO`, `LLENANDO`, `VACIANDO`) | * Permitir modificar su nivel aumentando o disminuyendo litros (respetando topes).<br>* Cambiar el estado de operación.<br>* Permitir consultar la información general del tanque.<br>* Calcular el porcentaje de llenado en base a su nivel y capacidad. |
 | **SensorDeNivel** | Proporcionar una lectura indirecta e inspección del estado de un tanque. | * Tanque al que se encuentra asociado/vinculado | * Consultar y retornar el nivel en litros del tanque vinculado.<br>* Consultar y retornar el porcentaje de llenado del tanque.<br>* Generar un reporte o lectura con el formato especificado del estado del tanque. |
+
+4. Relaciones entre los objetos
+
+* **Colaboración entre clases:** El `SensorDeNivel` necesita colaborar con la clase `Tanque`.
+* **Información requerida:** El sensor no almacena volumen ni capacidad por sí mismo; para entregar una lectura válida, necesita consultar de manera directa la información almacenada en el objeto `Tanque` que tiene asignado.
+* **Justificación de la relación:** Esta separación aplica el principio de responsabilidad única. El `Tanque` es responsable de conservar los datos físicos e impedir estados no válidos (por ejemplo, evitar que se llene de más). El `SensorDeNivel` únicamente actúa como un medio de lectura/monitoreo sobre dicho tanque.
+* **No duplicación de responsabilidades:** El sensor no debe guardar una copia independiente de la capacidad ni del nivel actual. Toda consulta de lectura realizada por el sensor debe leerse directamente del tanque en tiempo real para evitar inconsistencias de datos.
