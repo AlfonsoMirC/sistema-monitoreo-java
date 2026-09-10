@@ -44,3 +44,24 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
 * **Información requerida:** El sensor no almacena volumen ni capacidad por sí mismo; para entregar una lectura válida, necesita consultar de manera directa la información almacenada en el objeto `Tanque` que tiene asignado.
 * **Justificación de la relación:** Esta separación aplica el principio de responsabilidad única. El `Tanque` es responsable de conservar los datos físicos e impedir estados no válidos (por ejemplo, evitar que se llene de más). El `SensorDeNivel` únicamente actúa como un medio de lectura/monitoreo sobre dicho tanque.
 * **No duplicación de responsabilidades:** El sensor no debe guardar una copia independiente de la capacidad ni del nivel actual. Toda consulta de lectura realizada por el sensor debe leerse directamente del tanque en tiempo real para evitar inconsistencias de datos.
+
+| Clase | Atributos propuestos | Tipo de datos | Metodos propuestos |
+| :--- | :--- | :--- | :--- |
+| Tanque | ID | string | Privado |
+| Tanque | Capacidad Max. | double | Privado |
+| Tanque | Nivel Actual | double | Privado |
+| Tanque | Estado | EstadoTanque | Privado |
+| Tanque | Tanque(ID, Capacidad Max.) | constructor | Publico |
+| Tanque | Llenar(Cantidad) | void | Publico |
+| Tanque | Vaciar(Cantidad) | void | Publico |
+| Tanque | Detener() | void | Publico |
+| Tanque | ConsultarNivel() | double | Publico |
+| Tanque | CalcularOcupacion() | double | Publico |
+| Tanque | getNivel() | EstadoTanque | Publico |
+| Sensor | ID | string | Privado |
+| Sensor | UltimaLectura | double | Privado |
+| Sensor | TanqueAsociado | Tanque | Privado |
+| Sensor | Sensor(ID, Tanque) | string | Publico |
+| Sensor | LeerNivel() | double | Publico |
+| Sensor | ValidarLectura(valor) | bool | Publico |
+| Sensor | getUltimaLectura() | double | Publico |
