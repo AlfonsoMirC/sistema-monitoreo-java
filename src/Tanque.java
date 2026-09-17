@@ -1,7 +1,7 @@
 public class Tanque {
 
-    private String id;
-    private double capacidadMaxima;
+    private final String id;
+    private final double capacidadMaxima;
     private double nivelActual;
     private EstadoTanque estado;
 
