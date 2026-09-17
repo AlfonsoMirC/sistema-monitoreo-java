@@ -71,3 +71,31 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
 ## 6. Diagrama UML inicial
 
 ![Diagrama UML inicial](docs/uml-inicial.png)
+
+## 7. Justificacion de diseño: 
+1. ¿Por qué propusieron esas clases? 
+
+   - Son los dos elementos principales que reciben y envia información, poseen caracteristicas que cada elemento de su tipo tendra
+
+2. ¿Cuál es la responsabilidad principal de cada clase?
+   
+   - Determinar las caracteristicas y elementos que conformal el tanque y el sensor, definen sus caracteristicas principales, pero definen que pertenecen a un mismo grupo de objetos
+   
+3. ¿Por qué determinados atributos fueron definidos como privados?
+
+   - Son elementos que fijos, los cuales deberan ser modificados solo al principio, en este caso, deberan tener solo acceso por medio de funciones determinadas
+4. ¿Qué información decidieron proporcionar mediante los constructores?
+   
+   - Mediante constructures, en el caso del tanque, se proporciona el ID y la capacidad
+   
+5. ¿Qué objetos se relacionan entre sí y por qué?
+
+   - SensorDeNivel se relaciona con Tanque porque necesita colaborar con él para poder generar una lectura: el sensor no tiene datos propios de volumen o capacidad, así que cada vez que se le pide una lectura, consulta directamente al Tanque que tiene asignado. Es una relación de dependencia en un solo sentido, el sensor conoce y usa al tanque, pero el tanque no conoce ni depende del sensor.
+
+6. ¿Qué decisiones tomaron para evitar duplicar responsabilidades?
+
+   - Decidimos que SensorDeNivel no guardara una copia propia del nivel ni de la capacidad del tanque; en su lugar, toda lectura se obtiene consultando al Tanque en tiempo real. Esto evita que existan dos fuentes de verdad para el mismo dato y previene inconsistencias (por ejemplo, que el sensor reporte un nivel desactualizado). De la misma forma, la validación de límites físicos (que el nivel no sea negativo ni exceda la capacidad) vive únicamente en Tanque, y no se repite en SensorDeNivel — el sensor confía en que el tanque ya garantiza esa consistencia.
+
+7. ¿Qué parte del diseño fue discutida entre ambos integrantes y qué decisión tomaron?
+
+   - Un punto que vale la pena documentar aquí es la definición del método que expone el estado del tanque: en la tabla de atributos/métodos aparece como getNivel() con tipo de retorno EstadoTanque, lo cual mezcla dos ideas (nivel vs. estado). Si como equipo discutieron si ese método debía llamarse getNivel() o getEstado(), y por qué se decidieron por uno u otro, esa es una decisión de diseño real que pueden documentar en esta sección con sus propias palabras.
