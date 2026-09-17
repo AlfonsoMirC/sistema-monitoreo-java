@@ -3,6 +3,8 @@
 | A | Miranda Cervantes Alfonso | 03/09/2026 |
 | B | Rangel Rojas Fabian | 03/09/2026 |
 
+Descripcion del problema: 
+
 1. Descripción del problema
 
 El sistema a desarrollar busca modelar y simular el comportamiento operativo de los tanques de almacenamiento de fluidos dentro de una planta industrial.
@@ -65,3 +67,7 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
 | Sensor | LeerNivel() | double | Publico |
 | Sensor | ValidarLectura(valor) | bool | Publico |
 | Sensor | getUltimaLectura() | double | Publico |
+
+## 6. Diagrama UML inicial
+
+![Diagrama UML inicial](uml-inicial.png)
