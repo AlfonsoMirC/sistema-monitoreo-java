@@ -70,4 +70,4 @@ A partir del problema planteado, identificamos los siguientes elementos que debe
 
 ## 6. Diagrama UML inicial
 
-![Diagrama UML inicial](uml-inicial.png)
+![Diagrama UML inicial](docs/uml-inicial.png)
